@@ -1,0 +1,20 @@
+/* header */
+.innerHeader{
+    height: 100%;
+    max-width: 1390px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.innerHeader div{
+    display: flex;
+    justify-content: flex-start;
+    gap: 32px;
+    align-items: center;
+}
+
+.headerIcon{
+    height: 64px;
+}
