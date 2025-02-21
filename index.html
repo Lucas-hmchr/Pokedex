@@ -7,22 +7,23 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./styles/content.css">
+    <script src="./scripts/template.js"></script>
     <script src="./script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <header>
-        <div class="innerHeader">
-            <div>
-                <img src="./assets/icons/logoIcon.svg" class="headerIcon" alt="">
-                <h1>Pokedex</h1>
-            </div>
+        <div>
+            <a href="./index.html" class="headerIcon"><img src="./assets/icons/logoIcon.svg" class="headerIcon" alt=""></a>
+            <h1>Pokedex</h1>
         </div>
     </header>
 
-    <main>
+    <main id="pokedexContent" class="pokedexContent">
 
     </main>
+
+    <button onclick="loadMorePokemon()" id="loadMoreButton" class="loadMoreButton"><img src="./assets/icons/reload.svg" alt=""></button>
 
     <footer>
         <div class="innerFooter">

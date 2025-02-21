@@ -1,20 +1,149 @@
 /* header */
-.innerHeader{
-    height: 100%;
-    max-width: 1390px;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.innerHeader div{
+header div {
     display: flex;
     justify-content: flex-start;
     gap: 32px;
     align-items: center;
 }
 
-.headerIcon{
+.headerIcon {
     height: 64px;
+}
+
+/* main */
+
+.pokemonCard{
+    width: 320px;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 8px 8px 0px 0px rgb(17, 63, 103);
+    border-radius: 16px;
+    border: 1px solid var(--primary-color);
+    padding: 16px;
+}
+
+.pokemonCardImage{
+    width: 160px;
+}
+
+.types{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    width: 180px;
+}
+
+/* types */
+
+.type{
+    padding: 8px;
+    padding-inline: 16px;
+    border-radius: 64px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.grassType{
+  background-color: var(--grass-type);
+}
+
+.fireType{
+  background-color: var(--fire-type);
+}
+
+.flyingType{
+  background-color: var(--flying-type);
+}
+
+.poisonType{
+    background-color: var(--poison-type);
+}
+
+.normalType{
+    background-color: var(--normal-type);
+}
+
+.fightingType{
+    background-color: var(--fighting-type);
+}
+
+.groundType{
+    background-color: var(--ground-type);
+}
+
+.rockType{
+    background-color: var(--rock-type);
+}
+
+.bugType{
+    background-color: var(--bug-type);
+}
+
+.ghostType{
+    background-color: var(--ghost-type);
+}
+
+.steelType{
+    background-color: var(--steel-type);
+}
+
+.waterType{
+    background-color: var(--water-type);
+}
+
+.electricType{
+    background-color: var(--electric-type);
+}
+
+.psychicType{
+    background-color: var(--psychic-type);
+}
+
+.iceType{
+    background-color: var(--ice-type);
+}
+
+.dragonType{
+    background-color: var(--dragon-type);
+}
+
+.darkType{
+    background-color: var(--dark-type);
+}
+
+.fairyType{
+    background-color: var(--fairy-type);
+}
+
+.stellarType{
+    background-color: var(--stellar-type);
+}
+
+.unknownType{
+    background-color: var(--unknown-type);
+}
+
+/* loadMoreButton */
+.loadMoreButton{
+    width: 160px;
+    aspect-ratio: 1/1;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 32px;
+    margin-inline: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+
+.loadMoreButton img{
+    width: 100%;
 }
