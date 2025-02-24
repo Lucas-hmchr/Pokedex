@@ -140,11 +140,13 @@ function toggleErrorMessage() {
 };
 
 async function getPokemonBySearch() {
-    document.getElementById('pokedexContent').innerHTML = ''
-    searchedPokemon.name = document.getElementById('searchBar').value;
-    let searchUrl = `${BASE_URL}pokemon/${document.getElementById('searchBar').value}`
-    await getSingleData(searchUrl, null)
-    renderSearchedPokemon();
+    if (document.getElementById('searchBar').value !== '') {
+        document.getElementById('pokedexContent').innerHTML = ''
+        searchedPokemon.name = document.getElementById('searchBar').value;
+        let searchUrl = `${BASE_URL}pokemon/${document.getElementById('searchBar').value}`
+        await getSingleData(searchUrl, null)
+        renderSearchedPokemon();
+    }
 }
 
 function checkInput() {
