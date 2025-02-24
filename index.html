@@ -17,13 +17,21 @@
             <a href="./index.html" class="headerIcon"><img src="./assets/icons/logoIcon.svg" class="headerIcon" alt=""></a>
             <h1>Pokedex</h1>
         </div>
+        <div id="searchContainer" class="searchContainer">
+            <input type="search" name="" id="searchBar" class="searchBar" placeholder="Find Pokemon..." oninput="checkInput()">
+            <img src="./assets/icons/searchIcon.svg" alt="" class="searchIcon" onclick="getPokemonBySearch()">
+        </div>
     </header>
 
     <main id="pokedexContent" class="pokedexContent">
 
     </main>
 
-    <button onclick="loadMorePokemon()" id="loadMoreButton" class="loadMoreButton"><img src="./assets/icons/reload.svg" alt=""></button>
+    <div id="errorMessage" class="dNone">
+        <h2>Es konnte kein Pokemon gefunden werden.</h2>
+    </div>
+
+    <button onclick="loadMorePokemon()" id="loadMoreButton" class="loadMoreButton"><img src="./assets/icons/reload.svg"  id="loadMoreButtonIcon" alt=""></button>
 
     <footer>
         <div class="innerFooter">

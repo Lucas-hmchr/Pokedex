@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+h2{
+    text-align: center;
+}
+
 :root {
     --primary-color: #113f67;
 
@@ -23,7 +27,7 @@
     --ghost-type: #c9c9c9ab;
     --steel-type: #b1b1b1;
     --water-type: #1a5dee;
-    --electric-type: #fffb24;
+    --electric-type: #f7e710;
     --psychic-type: #d32af5;
     --ice-type: #2ae7f5;
     --dragon-type: #843fdf;
@@ -53,6 +57,7 @@ header {
     padding-inline: 40px;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
 }
 
 main{
@@ -68,4 +73,8 @@ main{
 footer {
     height: 120px;
     background-color: var(--primary-color);
+}
+
+.dNone{
+    display: none;
 }
