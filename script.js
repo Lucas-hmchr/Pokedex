@@ -60,21 +60,22 @@ async function getSingleData(url, index) {
 
 function renderPokemonCards() {
     document.getElementById('errorMessage').classList.add('dNone')
-    if (pokemonList.length > limit && document.getElementById('pokedexContent').innerHTML !== '') {
-        let startIndex = pokemonList.length - limit;
-        if (startIndex < 0) startIndex = 0;
-        for (let index = startIndex; index < pokemonList.length; index++) {
-            const element = pokemonList[index];
-            document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
-            renderTypes(element, index)
-        }
-    } else {
+    document.getElementById('pokedexContent').innerHTML = ''
+    // if (pokemonList.length > limit && document.getElementById('pokedexContent').innerHTML !== '') {
+    //     let startIndex = pokemonList.length - limit;
+    //     if (startIndex < 0) startIndex = 0;
+    //     for (let index = startIndex; index < pokemonList.length; index++) {
+    //         const element = pokemonList[index];
+    //         document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
+    //         renderTypes(element, index)
+    //     }
+    // } else {
         for (let index = 0; index < pokemonList.length; index++) {
             const element = pokemonList[index];
             document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
             renderTypes(element, index)
         }
-    }
+    // }
 }
 
 function renderTypes(pokemon, index) {
@@ -141,11 +142,13 @@ function toggleErrorMessage() {
 
 async function getPokemonBySearch() {
     if (document.getElementById('searchBar').value !== '') {
+        toggleLoadingAnimation();
         document.getElementById('pokedexContent').innerHTML = ''
         searchedPokemon.name = document.getElementById('searchBar').value;
         let searchUrl = `${BASE_URL}pokemon/${document.getElementById('searchBar').value}`
         await getSingleData(searchUrl, null)
         renderSearchedPokemon();
+        toggleLoadingAnimation()
     }
 }
 
