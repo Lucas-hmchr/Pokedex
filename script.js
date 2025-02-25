@@ -90,11 +90,7 @@ function renderSearchedPokemon() {
 async function loadMorePokemon() {
     toggleLoadingAnimation();
     document.getElementById('searchBar').value = '';
-    offset += 20;
-    params.delete("limit")
-    params.delete("offset")
-    params.append("limit", limit);
-    params.append("offset", offset);
+    await adjustParams();
     try {
         const response = await fetch(`${BASE_URL}pokemon?${params}`, {
             "method": "GET",
@@ -105,6 +101,14 @@ async function loadMorePokemon() {
         console.error(error)
     }
     toggleLoadingAnimation()
+}
+
+async function adjustParams(){
+    offset += 20;
+    params.delete("limit")
+    params.delete("offset")
+    params.append("limit", limit);
+    params.append("offset", offset);
 }
 
 async function addNewPokemon(newPokemon) {
@@ -121,8 +125,10 @@ function toggleLoadingAnimation() {
 
     if (document.getElementById('loadMoreButton').classList.contains('spinningAnimation')) {
         document.getElementById('loadMoreButtonIcon').src = "./assets/icons/logoIconWhite.svg"
+        document.getElementById('loadMoreButton').disabled = true;
     } else {
         document.getElementById('loadMoreButtonIcon').src = "./assets/icons/reload.svg"
+        document.getElementById('loadMoreButton').disabled = false;
     }
 };
 
