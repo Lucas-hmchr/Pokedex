@@ -1,13 +1,11 @@
 async function openOverlay(index) {
     if (!searchedPokemon.name) {
-        console.log('aus liste')
         document.getElementById('overlay').classList.add('dFlex')
         await renderOverlayContent(index);
         await renderOverlayTypes(index);
         checkIndex(index);
 
     } else {
-        console.log('einzeln')
         document.getElementById('overlay').classList.add('dFlex')
         await renderOverlayContent();
         await renderOverlayTypes();
