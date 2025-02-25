@@ -5,7 +5,6 @@ let limit = 20;
 let offset = 0;
 
 let pokemonList;
-let pokedexData;
 
 let searchedPokemon = {};
 
@@ -61,21 +60,11 @@ async function getSingleData(url, index) {
 function renderPokemonCards() {
     document.getElementById('errorMessage').classList.add('dNone')
     document.getElementById('pokedexContent').innerHTML = ''
-    // if (pokemonList.length > limit && document.getElementById('pokedexContent').innerHTML !== '') {
-    //     let startIndex = pokemonList.length - limit;
-    //     if (startIndex < 0) startIndex = 0;
-    //     for (let index = startIndex; index < pokemonList.length; index++) {
-    //         const element = pokemonList[index];
-    //         document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
-    //         renderTypes(element, index)
-    //     }
-    // } else {
         for (let index = 0; index < pokemonList.length; index++) {
             const element = pokemonList[index];
             document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
             renderTypes(element, index)
         }
-    // }
 }
 
 function renderTypes(pokemon, index) {
@@ -100,6 +89,7 @@ function renderSearchedPokemon() {
 
 async function loadMorePokemon() {
     toggleLoadingAnimation();
+    document.getElementById('searchBar').value = '';
     offset += 20;
     params.delete("limit")
     params.delete("offset")

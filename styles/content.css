@@ -66,6 +66,11 @@ header div:nth-child(1) {
     width: 160px;
     z-index: 1;
     filter: drop-shadow(8px -4px 0px #00000085);
+    transition: 0.2s ease-in-out;
+}
+
+.pokemonCard:hover .pokemonCardImage {
+    scale: 1.2;
 }
 
 .types {
@@ -175,8 +180,6 @@ header div:nth-child(1) {
     border-radius: 50%;
     position: absolute;
     bottom: 32px;
-    transform: skew(1.5);
-
     /* z-index: 0; */
 }
 
@@ -205,6 +208,12 @@ header div:nth-child(1) {
     animation: spin 1s linear infinite;
 }
 
+/* footer */
+
+.footerLink{
+    color: white;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -213,4 +222,43 @@ header div:nth-child(1) {
     to {
         transform: rotate(360deg);
     }
+}
+
+@media (max-width: 550px) {
+    header h1 {
+        display: none;
+    }
+
+
+    .pokemonCard {
+        height: 320px;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .searchContainer {
+        width: 160px;
+        height: 70%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .searchBar {
+        width: 120px;
+    }
+}
+
+/* Impressum */
+
+.impressum{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 48px;
+    gap: 40px;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: flex-start;
 }
