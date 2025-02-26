@@ -115,7 +115,7 @@ async function loadMorePokemon() {
         let newPokemon = await response.json()
         await addNewPokemon(newPokemon.results);
     } catch (error) {
-        console.error(error)
+        console.error('error:',error)
     }
     toggleLoadingAnimation()
 }
