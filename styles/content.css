@@ -262,3 +262,9 @@ header div:nth-child(1) {
     flex-direction: column;
     align-items: flex-start;
 }
+
+.errorMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

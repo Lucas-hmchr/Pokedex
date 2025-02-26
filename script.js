@@ -55,6 +55,7 @@ async function getSingleData(url, index) {
     } catch (error) {
         console.error(error)
         document.getElementById('errorMessage').classList.remove('dNone')
+        toggleLoadingAnimation();
     }
 };
 
