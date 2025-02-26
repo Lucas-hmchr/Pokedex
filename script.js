@@ -5,6 +5,7 @@ let limit = 20;
 let offset = 0;
 
 let pokemonList;
+let pokemonListFiltered = [];
 
 let searchedPokemon = {};
 
@@ -60,11 +61,27 @@ async function getSingleData(url, index) {
 function renderPokemonCards() {
     document.getElementById('errorMessage').classList.add('dNone')
     document.getElementById('pokedexContent').innerHTML = ''
-        for (let index = 0; index < pokemonList.length; index++) {
-            const element = pokemonList[index];
-            document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
-            renderTypes(element, index)
-        }
+    if (!pokemonListFiltered.length) {
+        renderAllPokemonCard();
+    } else {
+        renderFilteredPokemonCard();
+    }
+}
+
+function renderAllPokemonCard() {
+    for (let index = 0; index < pokemonList.length; index++) {
+        const element = pokemonList[index];
+        document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
+        renderTypes(element, index)
+    }
+}
+
+function renderFilteredPokemonCard() {
+    for (let index = 0; index < pokemonListFiltered.length; index++) {
+        const element = pokemonListFiltered[index];
+        document.getElementById('pokedexContent').innerHTML += pokemonTemplate(element, index);
+        renderTypes(element, index)
+    }
 }
 
 function renderTypes(pokemon, index) {
@@ -89,7 +106,7 @@ function renderSearchedPokemon() {
 
 async function loadMorePokemon() {
     toggleLoadingAnimation();
-    document.getElementById('searchBar').value = '';
+    await resetSearch()
     await adjustParams();
     try {
         const response = await fetch(`${BASE_URL}pokemon?${params}`, {
@@ -103,7 +120,14 @@ async function loadMorePokemon() {
     toggleLoadingAnimation()
 }
 
-async function adjustParams(){
+async function resetSearch(){
+    document.getElementById('searchBar').value = '';
+    pokemonListFiltered = [];
+    searchedPokemon = {};
+    document.getElementById('pokedexContent').innerHTML = ''
+}
+
+async function adjustParams() {
     offset += 20;
     params.delete("limit")
     params.delete("offset")
@@ -137,21 +161,29 @@ function toggleErrorMessage() {
 };
 
 async function getPokemonBySearch() {
-    if (document.getElementById('searchBar').value !== '') {
-        toggleLoadingAnimation();
+    toggleLoadingAnimation();
+    if (document.getElementById('searchBar').value.length >= 3) {
+        await filterPokemon();
         document.getElementById('pokedexContent').innerHTML = ''
-        searchedPokemon.name = document.getElementById('searchBar').value;
-        let searchUrl = `${BASE_URL}pokemon/${document.getElementById('searchBar').value}`
-        await getSingleData(searchUrl, null)
-        renderSearchedPokemon();
-        toggleLoadingAnimation()
+        if (pokemonListFiltered.length > 0) {
+            renderPokemonCards();
+        } else {
+            searchedPokemon.name = document.getElementById('searchBar').value;
+            let searchUrl = `${BASE_URL}pokemon/${document.getElementById('searchBar').value}`
+            await getSingleData(searchUrl, null)
+            renderSearchedPokemon();
+        }
+        toggleLoadingAnimation();
     }
+}
+
+async function filterPokemon() {
+    pokemonListFiltered = pokemonList.filter((pokemon) => pokemon.name.includes(document.getElementById('searchBar').value))
 }
 
 function checkInput() {
     if (document.getElementById('searchBar').value === '') {
-        searchedPokemon = {};
-        document.getElementById('pokedexContent').innerHTML = ''
+        resetSearch();
         document.getElementById('errorMessage').classList.add('dNone')
         renderPokemonCards();
     }
