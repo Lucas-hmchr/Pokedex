@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+:root {
+    --primary-color: #113f67;
+
+
+}
+
+:root{
+    --fire-type: #D72009;
+    --grass-type: #137F41;
+    --flying-type: #bce1f0;
+    --poison-type: #a1118e;
+    --normal-type: #c2c2c2;
+    --fighting-type: #ff8800;
+    --ground-type: #c77700;
+    --rock-type: #855000;
+    --bug-type: #228f07;
+    --ghost-type: #c9c9c9ab;
+    --steel-type: #b1b1b1;
+    --water-type: #1a5dee;
+    --electric-type: #f7e710;
+    --psychic-type: #d32af5;
+    --ice-type: #2ae7f5;
+    --dragon-type: #843fdf;
+    --dark-type: #000000;
+    --fairy-type: #d803bc;
+    --stellar-type: #eeba11;
+    --unknown-type: #000000;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+header {
+    height: 100px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--primary-color);
+    display: flex;
+    position: sticky;
+    top: 0;
+    padding-inline: 40px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+main{
+    background-color: white;
+    padding: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+footer {
+    height: 120px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 40px;
+}
+
+.dNone{
+    visibility: hidden!important;
+}
+
+.dFlex{
+    display: flex!important;
+}
+
+@media (max-width: 550px){
+    main{
+        padding: 40px;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 390px){
+    header {
+
+        padding-inline: 16px;
+    }
+
+    main{
+        padding: 24px;
+        gap: 48px;
+    }
+
+    footer{
+        padding-inline: 16px;
+    }
+}
